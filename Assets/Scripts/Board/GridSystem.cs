@@ -1,17 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Entities;
 
 //position
-public class Grid : Component {
+public class GridSystem : ComponentSystem {
 
-	// Use this for initialization
-	void Start () {
-		
+
+
+    protected override void OnUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    // Use this for initialization
+    void Start ()
+    {
+        
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

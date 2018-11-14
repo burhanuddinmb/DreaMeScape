@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid : MonoBehaviour {
+public class GirdPiece{
     public int x;
     public int y;
     public GameObject unit;
+
+    public GirdPiece(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
     public bool isOccupied
     {
         get { return unit != null; }
     }
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

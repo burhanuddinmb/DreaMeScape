@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridMatrix : MonoBehaviour {
 
-    GirdPiece[,] gameGrid;
+    GridPiece[,] gameGrid;
     int maxX;
     int maxY;
     [SerializeField] GameObject gridPrefab;
@@ -24,25 +24,19 @@ public class GridMatrix : MonoBehaviour {
 
     void CreateGrid()
     {
-        gameGrid = new GirdPiece[maxX, maxY];
+        gameGrid = new GridPiece[maxX, maxY];
 
-        
+
         for (int x = 0; x < maxX; x++)
         {
             for (int y = 0; y < maxY; y++)
             {
-                gameGrid[x, y] = new GirdPiece(x,y);
+                gameGrid[x, y] = GridPiece.CreateInstance<GridPiece>();
+                gameGrid[x, y].x = x;
+                gameGrid[x, y].y = y;
 
-                RaycastHit hit;
-                Ray rayResult = new Ray(new Vector3(x, 10, y), new Vector3(x, 0, y));
-                if (Physics.Raycast(rayResult, out hit, Mathf.Infinity))
-                {
-                    Instantiate(gridPrefab, hit.point, Quaternion.identity);
-                }
+                Instantiate(gridPrefab, new Vector3(x, 2, y), Quaternion.identity);
             }
         }
-
-        Debug.Log(gameGrid[8, 10].x);
-
     }
 }

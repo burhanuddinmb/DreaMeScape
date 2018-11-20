@@ -7,6 +7,8 @@ public class GridPiece : ScriptableObject{
     public int y;
     public GameObject unit;
 
+    bool isDead;
+
     public bool isOccupied
     {
         get { return unit != null; }

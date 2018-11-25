@@ -5,12 +5,13 @@ using UnityEngine;
 public class GridPiece : ScriptableObject{
     public int x;
     public int y;
-    public GameObject unit;
+    public GameObject unit = null;
 
-    bool isDead;
-
+    public bool isDead = false;
+    
+    //Return true of dead or occupied
     public bool isOccupied
     {
-        get { return unit != null; }
+        get { return (unit != null) || (isDead); }
     }
 }

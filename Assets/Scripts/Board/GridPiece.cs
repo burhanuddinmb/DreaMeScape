@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridPiece : ScriptableObject{
-    public int x;
-    public int y;
-    public GameObject unit = null;
+/// <summary>
+/// Keep track of the units held by each grid
+/// </summary>
+public class GridPiece : MonoBehaviour{
 
+    public GameObject unit = null;
     public bool isDead = false;
-    
-    //Return true of dead or occupied
+
+    /// <summary>
+    /// Return true if occupied
+    /// </summary>
     public bool isOccupied
     {
-        get { return (unit != null) || (isDead); }
+        get { return (unit != null) || isDead; }
     }
 }

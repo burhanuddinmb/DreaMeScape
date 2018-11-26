@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4647201151334114}
-  - component: {fileID: 114135561651693362}
+  - component: {fileID: 114313357690189796}
   m_Layer: 0
   m_Name: Level1GameManager
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114135561651693362
+--- !u!114 &114313357690189796
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1679511849920518}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d790ae0c7dd437146a008316608bb550, type: 3}
+  m_Script: {fileID: 11500000, guid: f47faaf28e53ca04ba670d3a7297aa08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gridPrefab: {fileID: 1013068746482428, guid: 07e1dc99432cb5644ad2ef3e8037190c, type: 2}

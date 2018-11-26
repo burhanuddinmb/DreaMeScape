@@ -7,15 +7,14 @@ using Unity.Entities;
 public class GridSystem : ComponentSystem {
 
     private struct gridObjects{
-        public GridPiece eachGrid;
-        public GridCoordinates position;
+        public GridPiece pieceData;
+        public GridCoordinates gridCoordinate;
     }
 
-    /// <summary>
-    /// Handle movement here
-    /// </summary>
     protected override void OnUpdate()
     {
+        //This checks all the tiles
+        //Example for using other stuff with systems
         foreach (var item in GetEntities<gridObjects>())
         {
         }

@@ -31,6 +31,7 @@ public class GridStartup : MonoBehaviour {
         Vector3 placementOrigin = Vector3.zero;
         Vector3 directionVector = -Vector3.up;
 
+        //LayerMasking every component
         int layerMask = LayerMask.GetMask("GridArea");
 
         for (int x = 0; x < maxX; x++)
@@ -48,6 +49,7 @@ public class GridStartup : MonoBehaviour {
                 {
                     GridMatrix.gameGrid[x, y] = Instantiate(gridPrefab, placementOrigin, Quaternion.identity, transform);
                     GridMatrix.gameGrid[x, y].GetComponent<MeshRenderer>().enabled = false;
+                    GridMatrix.gameGrid[x, y].GetComponent<BoxCollider>().enabled = false;
                     GridMatrix.gameGrid[x, y].GetComponent<GridPiece>().isDead = true;
                 }
                 GridMatrix.gameGrid[x, y].name = "GridX" + x + "Y" + y;

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23641673339904352}
   - component: {fileID: 114911621988368186}
   - component: {fileID: 64515177030535024}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4271058613800432}
   - component: {fileID: 33587372146669216}
   - component: {fileID: 23418380460105618}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 65470883542396490}
   - component: {fileID: 114146844217410292}
   - component: {fileID: 65567837679889504}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4264986402313968}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4986316374743218}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShipMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 65028295023789966}
   - component: {fileID: 65857246425246616}
   - component: {fileID: 114055252409799112}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 4567761196341474}
   - component: {fileID: 33852028402783420}
   - component: {fileID: 23937058165659536}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,8 +354,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1621222414811898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -45.98273, y: -0.19999886, z: -0.33228654}
-  m_LocalScale: {x: 0.488762, y: 1, z: 0.7142746}
+  m_LocalPosition: {x: -45.98, y: -0.19999886, z: 0.128}
+  m_LocalScale: {x: 0.488762, y: 1, z: 0.806416}
   m_Children: []
   m_Father: {fileID: 4986316374743218}
   m_RootOrder: 2
@@ -436,8 +436,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1951723008319884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.056007, y: 0.10000038, z: -0.17643769}
-  m_LocalScale: {x: 0.488762, y: 1, z: 0.8968792}
+  m_LocalPosition: {x: -41.06, y: 0.10000038, z: 0.335}
+  m_LocalScale: {x: 0.488762, y: 1, z: 0.9991234}
   m_Children: []
   m_Father: {fileID: 4986316374743218}
   m_RootOrder: 1

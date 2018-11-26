@@ -31,9 +31,7 @@ public class GridStartup : MonoBehaviour {
         Vector3 placementOrigin = Vector3.zero;
         Vector3 directionVector = -Vector3.up;
 
-        //TODO get layermask working
-        int layerMask = LayerMask.NameToLayer("GridArea");
-        Debug.Log(LayerMask.LayerToName(layerMask));
+        int layerMask = LayerMask.GetMask("GridArea");
 
         for (int x = 0; x < maxX; x++)
         {
@@ -42,7 +40,7 @@ public class GridStartup : MonoBehaviour {
                 placementOrigin = new Vector3((float)x * widthOfGrid, 20, (float)y * widthOfGrid);
 
                 RaycastHit hit;
-                if (Physics.Raycast(placementOrigin, directionVector, out hit))
+                if (Physics.Raycast(placementOrigin, directionVector, out hit, Mathf.Infinity, layerMask))
                 {
                     GridMatrix.gameGrid[x, y] = Instantiate(gridPrefab, hit.point, Quaternion.identity, transform);
                 }

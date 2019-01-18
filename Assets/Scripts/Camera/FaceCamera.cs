@@ -1,18 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Entities;
 
-public class FaceCamera : MonoBehaviour
+public class FaceCamera : ComponentSystem
 {
+    Transform camera;
+    private struct units
+    {
+        public UnitRotation unitRotation;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        camera = GameObject.Find("Main Camera").transform; ;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnUpdate()
     {
-        transform.rotation = GameObject.Find("Main Camera").transform.rotation;
+        foreach (var item in GetEntities<units>())
+        {
+            item.unitRotation.SetRotation(camera.rotation);
+        }
     }
 }

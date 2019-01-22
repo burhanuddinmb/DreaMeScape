@@ -17,7 +17,6 @@ public class GridSystem : ComponentSystem {
         //Example for using other stuff with systems
         foreach (var item in GetEntities<gridObjects>())
         {
-            Debug.Log("System working");
         }
     }
 }

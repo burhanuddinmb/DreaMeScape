@@ -654,6 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c3bb56d2cf708d4eb5a6ed7561cd661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraMoveSpeed: 0.1
 --- !u!1 &583615545 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4155661385424617216, guid: abfa6314f88e7184ea0a922d203505fc,

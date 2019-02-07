@@ -21,6 +21,7 @@ public class SetupCharactersOnBoard : MonoBehaviour
     {
         PlaceCharacters();
         PlaceCannons();
+        PlacePirates();
     }
 
     void PlaceCharacters()
@@ -64,6 +65,26 @@ public class SetupCharactersOnBoard : MonoBehaviour
                     transform.GetChild(i).GetComponent<GridPiece>().unit =
                         Instantiate(cannon, pos, rotation, cannonHandler);
                     //transform.GetChild(i).GetComponent<GridPiece>().unit.AddComponent<GameObjectEntity>();
+                    break;
+                }
+            }
+        }
+    }
+
+    void PlacePirates()
+    {
+        int[] array = { 16, 7, 16, 1, 11, 6, 11, 2};
+        int numberOfPirates = array.Length / 2;
+        for (int arrayIndex = 0; arrayIndex < numberOfPirates; arrayIndex++)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                GridCoordinates piece = transform.GetChild(i).GetComponent<GridCoordinates>();
+                if ((piece.x == array[arrayIndex * 2]) && (piece.y == ((array[(arrayIndex * 2) + 1]))))
+                {
+                    transform.GetChild(i).GetComponent<GridPiece>().unit =
+                        Instantiate(pirate, transform.GetChild(i).position, Quaternion.identity);
+                    // transform.GetChild(i).GetComponent<GridPiece>().unit.AddComponent<GameObjectEntity>();
                     break;
                 }
             }

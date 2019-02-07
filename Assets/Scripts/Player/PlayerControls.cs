@@ -6,12 +6,14 @@ public class PlayerControls : MonoBehaviour
 {
 
     private string selectedUnitName;
+    private string lastSelectedUnitName;
     private Transform selectedUnit;
-
+    private bool piecesHighlighted;
     // Start is called before the first frame update
     void Start()
     {
         selectedUnitName = "NoUnitSelected";
+        lastSelectedUnitName = "NoUnitSelected";
 
     }
 
@@ -20,20 +22,22 @@ public class PlayerControls : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //Check hitTargets to see if we clicked on a player tag
-            //Store the transform of the selected player
-            //Pull the player name substring from the GameObject name
-            //If we click on anything that's not a player, we unselect the last selected player
-            RaycastHit hit = GetComponent<RaycastManager>().getRaycastHitForTag("Player");
-            if (hit.transform != null)
+
+            moveOnClickedGridPiece();
+
+            //Populates selectedUnitName and selectedUnit
+            getPlayer();
+
+            if (piecesHighlighted)
             {
-                selectedUnit = hit.transform;
-                selectedUnitName = hit.transform.name.Substring(1, hit.transform.name.IndexOf("_") - 1);
+                gameObject.GetComponent<GridPieceSelect>().highlightMoveSpaces(playerName: lastSelectedUnitName, toHighlight: false);
+                piecesHighlighted = false;
             }
-            else
+
+            if (selectedUnit)
             {
-                selectedUnit = null;
-                selectedUnitName = "NoUnitSelected";
+                gameObject.GetComponent<GridPieceSelect>().highlightMoveSpaces(playerName: selectedUnitName, toHighlight : true);
+                piecesHighlighted = true;
             }
         }
     }
@@ -42,4 +46,38 @@ public class PlayerControls : MonoBehaviour
     {
         return selectedUnitName;
     }
+
+    private void moveOnClickedGridPiece()
+    {
+        int[] moveCoords = gameObject.GetComponent<GridPieceSelect>().getGridPieceCoordsOnClick();
+        GameObject moveLoc = GameObject.Find("GridX" + moveCoords[0] + "Y" + moveCoords[1]);
+
+        if (selectedUnit && moveLoc && moveLoc.GetComponent<GridPieceHighlight>().isHighlighted)
+        {
+            Debug.Log(moveLoc.transform.position);
+            selectedUnit.position = moveLoc.transform.position;
+        }
+    }
+
+    //Check hitTargets to see if we clicked on a player tag
+    //Store the transform of the selected player
+    //Pull the player name substring from the GameObject name
+    //If we click on anything that's not a player, we unselect the last selected player
+    private void getPlayer()
+    {
+        lastSelectedUnitName = selectedUnitName;
+        RaycastHit hit = GetComponent<RaycastManager>().getRaycastHitForTag("Player");
+        if (hit.transform != null)
+        {
+            selectedUnit = hit.transform;
+            selectedUnitName = hit.transform.name.Substring(1, hit.transform.name.IndexOf("_") - 1);
+        }
+        else
+        {
+            selectedUnit = null;
+            selectedUnitName = "NoUnitSelected";
+        }
+
+    }
+
 }

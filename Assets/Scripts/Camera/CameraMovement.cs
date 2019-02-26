@@ -42,8 +42,22 @@ public class CameraMovement : MonoBehaviour {
         //check to see if you are moving the camera up, down, left, or right
         MoveCamera(Input.GetAxis("SecondaryCommandHoriz"), Input.GetAxis("SecondaryCommandVert"));
         ZoomCamera(Input.GetAxis("Mouse Scrollwheel"), zoomInMin, zoomOutMax);
-        SwapCameras(Input.GetKeyDown(KeyCode.L));
-        AdjustCameraValues(currentCamera, prevCamera);
+
+        if(Input.GetKey(KeyCode.Q))
+        {
+            RotateCamera(true);
+        }
+        else if(Input.GetKey(KeyCode.E))
+        {
+            RotateCamera(false);
+        }
+
+        if (Input.GetMouseButton(2))
+        {
+            TranslateCamera();
+        }
+        //SwapCameras(Input.GetKeyDown(KeyCode.L));
+        //AdjustCameraValues(currentCamera, prevCamera);
     }
 
     //takes in input values and moves the camera based on the values
@@ -52,40 +66,24 @@ public class CameraMovement : MonoBehaviour {
     {
         if (right > 0 && currHorizVal < horizCap)
         {
-            for (int i = 0; i < cameraViews.Length; i++)
-            {
-                cameraViews[i].transform.position += cameraViews[i].transform.right * cameraMoveSpeed * Time.deltaTime;
-            }
-            transform.position += transform.right * cameraMoveSpeed * Time.deltaTime;
-            currHorizVal += transform.right.magnitude * cameraMoveSpeed * Time.deltaTime;
+            transform.parent.position += transform.right * cameraMoveSpeed * Time.deltaTime;
+            currHorizVal += transform.parent.right.magnitude * cameraMoveSpeed * Time.deltaTime;
         }
         else if (right < 0 && currHorizVal > - horizCap)
         {
-            for (int i = 0; i < cameraViews.Length; i++)
-            {
-                cameraViews[i].transform.position -= cameraViews[i].transform.right * cameraMoveSpeed * Time.deltaTime;
-            }
-            transform.position -= transform.right * cameraMoveSpeed * Time.deltaTime;
-            currHorizVal -= transform.right.magnitude * cameraMoveSpeed * Time.deltaTime;
+            transform.parent.position -= transform.right * cameraMoveSpeed * Time.deltaTime;
+            currHorizVal -= transform.parent.right.magnitude * cameraMoveSpeed * Time.deltaTime;
         }
 
         if (up > 0 && currVertVal < vertCap)
         {
-            for (int i = 0; i < cameraViews.Length; i++)
-            {
-                cameraViews[i].transform.position += cameraViews[i].transform.up * cameraMoveSpeed * Time.deltaTime;
-            }
-            transform.position += transform.up * cameraMoveSpeed * Time.deltaTime;
-            currVertVal += transform.up.magnitude * cameraMoveSpeed * Time.deltaTime;
+            transform.parent.position += transform.parent.up * cameraMoveSpeed * Time.deltaTime;
+            currVertVal += transform.parent.up.magnitude * cameraMoveSpeed * Time.deltaTime;
         }
         else if (up < 0 && currVertVal > -vertCap)
         {
-            for (int i = 0; i < cameraViews.Length; i++)
-            {
-                cameraViews[i].transform.position -= cameraViews[i].transform.up * cameraMoveSpeed * Time.deltaTime;
-            }
-            transform.position -= transform.up * cameraMoveSpeed * Time.deltaTime;
-            currVertVal -= transform.up.magnitude * cameraMoveSpeed * Time.deltaTime;
+            transform.parent.position -= transform.parent.up * cameraMoveSpeed * Time.deltaTime;
+            currVertVal -= transform.parent.up.magnitude * cameraMoveSpeed * Time.deltaTime;
         }
     }
 
@@ -103,6 +101,24 @@ public class CameraMovement : MonoBehaviour {
             {
                 obtainedCam.orthographicSize += scrollSpeed;
             }
+        }
+    }
+
+    public void TranslateCamera()
+    {
+
+    }
+
+    public void RotateCamera(bool isLeft)
+    {
+        //transform.LookAt();
+        if (isLeft)
+        {
+            transform.RotateAround(transform.parent.position, new Vector3(0.0f, 1.0f, 0.0f), 20 * Time.deltaTime * 5.0f);
+        }
+        else
+        {
+            transform.RotateAround(transform.parent.position, new Vector3(0.0f, -1.0f, 0.0f), 20 * Time.deltaTime * 5.0f);
         }
     }
 
@@ -126,24 +142,20 @@ public class CameraMovement : MonoBehaviour {
         if (clicked)
         {
             prevCamera = cameraViews[currentCameraIndex];
-            currentCameraIndex++;
-            if (currentCameraIndex >= cameraViews.Length)
-            {
-                currentCameraIndex = 0;
-            }
+            currentCameraIndex = ++currentCameraIndex % cameraViews.Length;
             currentCamera = cameraViews[currentCameraIndex];
             moving = true;
         }
     }
 
-    public void AdjustCameraValues(GameObject newObjToTakeValues, GameObject prevObjToTakeValues)
+    public void AdjustCameraValues(GameObject newCameraView, GameObject prevCamView)
     {
         if (moving)
         {
-            if (transform.position != newObjToTakeValues.transform.position || transform.rotation != newObjToTakeValues.transform.rotation)
+            if (transform.position != newCameraView.transform.position || transform.rotation != newCameraView.transform.rotation)
             {
-                transform.position = Vector3.Lerp(prevObjToTakeValues.transform.position, newObjToTakeValues.transform.position, portionOfJourney);
-                transform.rotation = Quaternion.Lerp(prevObjToTakeValues.transform.rotation, newObjToTakeValues.transform.rotation, portionOfJourney);
+                transform.position = Vector3.Lerp(prevCamView.transform.position, newCameraView.transform.position, portionOfJourney);
+                transform.rotation = Quaternion.Lerp(prevCamView.transform.rotation, newCameraView.transform.rotation, portionOfJourney);
                 portionOfJourney += Time.deltaTime * journeySpeed;
             }
             else

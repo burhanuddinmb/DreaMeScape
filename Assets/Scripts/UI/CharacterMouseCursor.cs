@@ -20,8 +20,17 @@ public class CharacterMouseCursor : MonoBehaviour
 
 
     private void OnMouseEnter()
-    {   
-        customCursor.EnableCrossBar();    
+    {
+        //Condition to check anything else is in front of it.
+
+        /*if (AdjacencyHandler.NumPlayerCharactersAround(gameObject, 1) >= 1 &&
+            !CannonStaticVariables.isCannonSelected && PlayerControls.selectedUnit != null &&
+                AdjacencyHandler.CompareAdjacency(gameObject, PlayerControls.selectedUnit.gameObject, 1))
+        {
+            
+        }*/
+
+        customCursor.EnableCrossBar();
     }
 
     private void OnMouseExit()

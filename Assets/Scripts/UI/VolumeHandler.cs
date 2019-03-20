@@ -20,6 +20,9 @@ public class VolumeHandler : MonoBehaviour
     private int count;
 
     private int indexCount;
+
+    public static float masterVolume;
+    private bool onLoad;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,15 +33,22 @@ public class VolumeHandler : MonoBehaviour
         minVolume = 0;
         count = 1;
         indexCount = 5;
+        onLoad = false;
+        //if(!onLoad)
+        //{
+        //    indexCount = 5;
+        //}
     }
     void Update()
     {
-       
+        //SetVolume(indexCount);
+        //masterVolume = indexCount;
+        //AudioListener.volume = masterVolume;
     }
     public void ChangeVolume(bool isPressed)
     {
-        currentIndex = Mathf.Clamp(currentIndex + (isPressed ? count : -count), min, max);     
-       
+        currentIndex = Mathf.Clamp(currentIndex + (isPressed ? count : -count), min, max);
+        onLoad = true;
         if(isPressed)
         {
             //Debug.Log("Increase the volume");
@@ -83,6 +93,22 @@ public class VolumeHandler : MonoBehaviour
             }
             
         }
-        Debug.Log("indexCount:    " + indexCount);
+        //Debug.Log("indexCount:    " + indexCount);
+
+        AudioListener.volume = indexCount;
+        masterVolume = indexCount;
+
+
+        float setVolume = PlayerPrefs.GetFloat("setVolume", indexCount);
     }
+
+    //public void SetVolume(int val)
+    //{
+    //    indexCount = val;
+    //}
+    
+    //public int GetVolume()
+    //{
+    //    return indexCount;
+    //}
 }

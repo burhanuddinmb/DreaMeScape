@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CharacterMouseCursor : MonoBehaviour
+public class CursorHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
-    CustomCursorTexture customCursor;
+    CursorTexture customCursor;
     // Start is called before the first frame update
     void Start()
     {
-        customCursor = GetComponent<CustomCursorTexture>();
+        customCursor = GetComponent<CursorTexture>();
     }
 
     // Update is called once per frame
@@ -30,11 +31,31 @@ public class CharacterMouseCursor : MonoBehaviour
             
         }*/
 
+      
+
         customCursor.EnableCrossBar();
     }
 
     private void OnMouseExit()
     {
+       
         customCursor.DisableCrossBar();
-    } 
-}
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {        
+        if (TutorialCards.isTutorialRunning)
+        {
+            Debug.Log("OnMouseEnter");
+            customCursor.EnableCrossBar();
+        }
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (TutorialCards.isTutorialRunning)
+        {
+            Debug.Log("OnMouseExit");
+            customCursor.DisableCrossBar();
+        }
+    }
+ }

@@ -46,7 +46,6 @@ public class CursorHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {        
         if (TutorialCards.isTutorialRunning)
         {
-            Debug.Log("OnMouseEnter");
             customCursor.EnableCrossBar();
         }
     }
@@ -54,7 +53,6 @@ public class CursorHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (TutorialCards.isTutorialRunning)
         {
-            Debug.Log("OnMouseExit");
             customCursor.DisableCrossBar();
         }
     }

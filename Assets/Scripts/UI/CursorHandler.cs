@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CursorHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CursorHandler : MonoBehaviour  //, IPointerEnterHandler, IPointerExitHandler
 {
 
     CursorTexture customCursor;
@@ -42,7 +42,7 @@ public class CursorHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         customCursor.DisableCrossBar();
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+   /* public void OnPointerEnter(PointerEventData eventData)
     {        
         if (TutorialCards.isTutorialRunning)
         {
@@ -55,5 +55,5 @@ public class CursorHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             customCursor.DisableCrossBar();
         }
-    }
+    }*/
  }

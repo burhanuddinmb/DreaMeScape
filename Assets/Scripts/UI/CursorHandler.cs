@@ -41,19 +41,4 @@ public class CursorHandler : MonoBehaviour  //, IPointerEnterHandler, IPointerEx
        
         customCursor.DisableCrossBar();
     }
-
-   /* public void OnPointerEnter(PointerEventData eventData)
-    {        
-        if (TutorialCards.isTutorialRunning)
-        {
-            customCursor.EnableCrossBar();
-        }
-    }
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (TutorialCards.isTutorialRunning)
-        {
-            customCursor.DisableCrossBar();
-        }
-    }*/
  }

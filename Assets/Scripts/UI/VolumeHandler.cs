@@ -12,6 +12,9 @@ public class VolumeHandler : MonoBehaviour
 
     [SerializeField] private int max;
     [SerializeField] private int min;
+
+   // [SerializeField] private GameObject volumeObj;
+
     public int currentIndex;
 
     private float volumeControl;
@@ -23,6 +26,10 @@ public class VolumeHandler : MonoBehaviour
 
     public static float masterVolume;
     private bool onLoad;
+
+   // private AudioSource audioSrc;
+    private float musicVolume = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +41,8 @@ public class VolumeHandler : MonoBehaviour
         count = 1;
         indexCount = 5;
         onLoad = false;
+       // audioSrc = GetComponent<AudioSource>();
+//
         //if(!onLoad)
         //{
         //    indexCount = 5;
@@ -92,23 +101,23 @@ public class VolumeHandler : MonoBehaviour
                 fillVolume[indexCount + 1].GetComponent<Image>().sprite = sprites[1];
             }
             
-        }
-        //Debug.Log("indexCount:    " + indexCount);
-
+        }    
+        
         AudioListener.volume = indexCount;
         masterVolume = indexCount;
 
+      //  audioSrc.volume = musicVolume;
 
-        float setVolume = PlayerPrefs.GetFloat("setVolume", indexCount);
+        //  float setVolume = PlayerPrefs.GetFloat("setVolume", indexCount);
     }
 
-    //public void SetVolume(int val)
-    //{
-    //    indexCount = val;
-    //}
-    
-    //public int GetVolume()
-    //{
-    //    return indexCount;
-    //}
+    public void SetVolume(int val)
+    {
+        indexCount = val;
+    }
+
+    public void SetVolume(float vol)
+    {
+        musicVolume = vol;
+    }
 }

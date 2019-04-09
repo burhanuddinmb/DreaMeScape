@@ -75,7 +75,7 @@ public class StarEffects : MonoBehaviour
                 allStars[starNum].accelerationY += amt;
             }
 
-            Debug.Log("Too fast!");
+            //Debug.Log("Too fast!");
         }
         //otherwise change randomly
         else
@@ -100,10 +100,10 @@ public class StarEffects : MonoBehaviour
             {
                 allStars[starNum].accelerationY -= 0.5f * amt;
             }
-            Debug.Log("Randomly changing!");
+            //Debug.Log("Randomly changing!");
 
-            Debug.Log(allStars[starNum].accelerationX);
-            Debug.Log(allStars[starNum].accelerationY);
+            //Debug.Log(allStars[starNum].accelerationX);
+            //Debug.Log(allStars[starNum].accelerationY);
         }
     }
 
@@ -113,7 +113,7 @@ public class StarEffects : MonoBehaviour
         {
             allStars[starNum].speedX += allStars[starNum].accelerationX;
             allStars[starNum].speedY += allStars[starNum].accelerationY;
-            Debug.Log("Increasing!");
+            //Debug.Log("Increasing!");
         }
         else
         {

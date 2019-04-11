@@ -68,4 +68,7 @@ public class SettingsHandler : MonoBehaviour
             leftButton.gameObject.SetActive(true);
         } 
     }
+
+
+
 }

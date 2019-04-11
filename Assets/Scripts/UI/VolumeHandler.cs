@@ -39,10 +39,13 @@ public class VolumeHandler : MonoBehaviour
     }
     void Update()
     {
-       for (int i = 0; i < audioSrc.Length; i++)
-       {
-            audioSrc[i].volume = volumeControl;
-       }
+        if (audioSrc != null)
+        {
+            for (int i = 0; i < audioSrc.Length; i++)
+            {
+                audioSrc[i].volume = volumeControl;
+            }
+        }
     }
     public void ChangeVolume(bool isPressed)
     {
@@ -50,7 +53,6 @@ public class VolumeHandler : MonoBehaviour
         
         if(isPressed)
         {
-            //Debug.Log("Increase the volume");
             volumeControl += 0.2f;
             
             if (volumeControl >= maxVolume)
@@ -70,7 +72,6 @@ public class VolumeHandler : MonoBehaviour
         }
         if(!isPressed)
         {
-            //Debug.Log("Decrease the volume");
             volumeControl -= 0.2f;
           
             if (volumeControl <= minVolume)

@@ -1044,7 +1044,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00024414062, y: 0.00024414062}
+  m_AnchoredPosition: {x: 0.00048828125, y: 0.00024414062}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &111178928
@@ -15655,9 +15655,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5698651494785228082, guid: 8ac515619f5893747818b400bcfebc6b,
         type: 3}
-      propertyPath: audioSrc
+      propertyPath: audioSrc.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698651494785228082, guid: 8ac515619f5893747818b400bcfebc6b,
+        type: 3}
+      propertyPath: audioSrc.Array.data[0]
       value: 
-      objectReference: {fileID: 1258840389}
+      objectReference: {fileID: 405272595}
+    - target: {fileID: 5698651494785228082, guid: 8ac515619f5893747818b400bcfebc6b,
+        type: 3}
+      propertyPath: audioSrc.Array.data[1]
+      value: 
+      objectReference: {fileID: 1258840390}
+    - target: {fileID: 5698651494238922551, guid: 8ac515619f5893747818b400bcfebc6b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698651494238922551, guid: 8ac515619f5893747818b400bcfebc6b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698651494238922551, guid: 8ac515619f5893747818b400bcfebc6b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5698651493321657474, guid: 8ac515619f5893747818b400bcfebc6b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -15688,15 +15713,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 5698651494238922551, guid: 8ac515619f5893747818b400bcfebc6b,
+    - target: {fileID: 5698651493321657474, guid: 8ac515619f5893747818b400bcfebc6b,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeVolume
-      objectReference: {fileID: 0}
-    - target: {fileID: 5698651494238922551, guid: 8ac515619f5893747818b400bcfebc6b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac515619f5893747818b400bcfebc6b, type: 3}

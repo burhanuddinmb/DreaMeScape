@@ -294,8 +294,8 @@ public class CharacterAbility : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //if (isInteractable)
-        //{
+        if (TutorialCards.isTutorialRunning)
+        {
             transform.GetComponent<Image>().color = Color.blue;
             if (buttonId == 0)
             {
@@ -337,12 +337,12 @@ public class CharacterAbility : MonoBehaviour, IPointerEnterHandler, IPointerExi
                 }
                 GetComponent<MedaAbilityHandler>().OnMouseHoveringStart();
             }
-      //  }
+        }
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-       // if (isInteractable)
-       // {
+        if (TutorialCards.isTutorialRunning)
+        {
             transform.GetComponent<Image>().color = Color.white;
             if (buttonId == 0)
             {
@@ -364,7 +364,7 @@ public class CharacterAbility : MonoBehaviour, IPointerEnterHandler, IPointerExi
             {
                 GetComponent<MedaAbilityHandler>().OnMouseHoveringExit();
             }
-       // }
+        }
 
         if (tooltipObj != null)
         {
